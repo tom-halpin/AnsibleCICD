@@ -1,0 +1,8 @@
+node {
+    // This displays colors using the 'xterm' ansi color map.
+    stage 'Get Code'
+        echo "Hello from Get Code"
+    stage 'Run Tests'
+        echo "Hello from Run Tests"
+    }
+}
