@@ -1,0 +1,20 @@
+#this script used to re-build container, and then run it. which is designed for windows.
+---
+#specify the host name which defined in the hosts file where located at ansible working folder
+- hosts: win2k16 
+  gather_facts: False  
+  tasks:  
+  # stop the running named aspnetcorecontainer container if exist in server
+  - name: Stop Container 
+    win_shell: docker stop aspnetcorecontainer
+    ignore_errors: yes
+  # remove the unused named aspnetcorecontainercontainer if exist in server
+  - name: Remove Container
+    win_shell: docker rm aspnetcorecontainer
+    ignore_errors: yes
+  # build up new container with name mydemos under working folder C:\DockerDemoASPNetCore
+  - name: Build Container
+    win_shell: docker build -t mydemos:aspnetcorehelloworld . chdir=C:\DockerDemoASPNetCore
+  # run up built from above step container with name aspnetcorecontainer, which expose 500 port
+  - name: Run Container
+    win_shell: docker run -d -p 8080:5000 --name aspnetcorecontainer mydemos:aspnetcorehelloworld

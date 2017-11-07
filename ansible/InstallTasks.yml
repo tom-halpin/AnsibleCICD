@@ -1,0 +1,23 @@
+#this script used to re-build container, and then run it. which is designed for linux.
+---
+#specify the host name which defined in the hosts file where located at ansible working folder
+- hosts: myself
+  gather_facts: False
+  # use root user on the remote server for each command
+  become: true
+  become_user: root  
+  tasks: 
+  # stop the running named aspnetcorecontainer container if exist in server 
+  - name: Stop Container
+    shell: docker stop aspnetcorecontainer
+    ignore_errors: yes
+  # remove the unused named aspnetcorecontainercontainer if exist in server
+  - name: Remove Container
+    shell: docker rm aspnetcorecontainer
+    ignore_errors: yes
+  # build up new container with name mydemos under working folder C:\DockerDemoASPNetCore
+  - name: Build Container
+    shell: docker build -t mydemos:aspnetcorehelloworld . chdir=/mnt/DockerDemoASPNetCore
+  # run up built from above step container with name aspnetcorecontainer, which expose 500 port
+  - name: Run Container
+    shell: docker run -d -p 8080:5000 --name aspnetcorecontainer mydemos:aspnetcorehelloworld
