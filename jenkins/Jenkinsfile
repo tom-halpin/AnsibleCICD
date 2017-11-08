@@ -1,17 +1,21 @@
-//pipeline {
-//  agent { label 'Ansible CI/CD Pipeline' }
+node {
 
-  stages {
-    stage('Build') { steps { echo 'Building ...' } }
-    stage('Test') {
-      steps {
-        echo 'Installing ansible linter into job workspace ...'
-        //sh 'npm install --prefix ./ newman'
-        echo 'Testing ...'
-        //sh 'node_modules/.bin/newman run --disable-unicode test/postman/BaconIpsum.postman_collection.json --environment test/postman/production.postman_environment.json'
-      }
-    }
-    stage('Deploy') { steps { echo 'Deploying ...' } }
- }
+            stage('Build') {
+                    echo 'SCM....'
+                    //git credentialsId: 'ning.liu4@hpe.com', url: 'https://github.houston.entsvcs.net/ServiceAgent/aspnetcore-docker-cross-linux-wins.git'
 
-//} 
+                    echo 'Building....'
+
+                   //bat '"C:\\Program Files\\Git\\usr\\bin\\ssh.exe" liuning0820@13.75.117.74 mv *.* /mnt/DockerDemoASPNetCore/ '
+                    
+
+                }
+   
+            stage('Test') {
+                echo 'Testing....'
+            }
+            stage('Deploy') {
+                echo 'Deploying....'
+            }
+
+}
