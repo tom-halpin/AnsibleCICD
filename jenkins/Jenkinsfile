@@ -16,7 +16,7 @@ node {
                 }
    
             stage('Test') {
-                echo 'Testing'....'
+                echo 'Testing....'
                 sh 'USER root'
                 echo 'Installing pip into job workspace ...'
                 sh 'apt-get install python-pip'
