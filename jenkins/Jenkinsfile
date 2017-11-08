@@ -1,5 +1,5 @@
 node {
-
+      try{
             stage('Prep')
             {
                         
@@ -20,5 +20,8 @@ node {
             stage('Deploy') {
                 echo 'Deploying....'
             }
-
+    } catch(all) {
+        currentBuild.result = "FAILURE"
+        throw err
+    }
 }
