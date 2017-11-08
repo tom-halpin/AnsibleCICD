@@ -17,7 +17,6 @@ node {
    
             stage('Test') {
                 echo 'Testing....'
-                sh 'rm /var/lib/dpkg/lock'
                 echo 'Installing pip into job workspace ...'
                 sh 'sudo apt-get install python-pip'
                 echo 'Installing ansible-lint into job workspace ...'
