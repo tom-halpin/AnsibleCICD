@@ -2,7 +2,7 @@ node {
 
             stage('Build') {
                     echo 'SCM....'
-                    //git credentialsId: 'ning.liu4@hpe.com', url: 'https://github.houston.entsvcs.net/ServiceAgent/aspnetcore-docker-cross-linux-wins.git'
+                    git credentialsId: 'tom.halpin@dxc.com', url: 'https://github.com/tom-halpin/AnsibleCICD'
 
                     echo 'Building....'
 
@@ -13,6 +13,11 @@ node {
    
             stage('Test') {
                 echo 'Testing....'
+                echo 'Installing ansible-lint into job workspace ...'
+                sh 'pip2 install ansible-lint'
+                echo 'Testing ...'
+                //command to run ansible-lint the parameter required is the path where the playbooks are stored
+                sh 'ansible-lint  /ansible'
             }
             stage('Deploy') {
                 echo 'Deploying....'
