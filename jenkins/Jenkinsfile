@@ -17,12 +17,12 @@ node {
    
             stage('Test') {
                 echo 'Testing'....'
-                echo 'USER root'
+                sh 'USER root'
                 echo 'Installing pip into job workspace ...'
                 sh 'apt-get install python-pip'
                 echo 'Installing ansible-lint into job workspace ...'
                 sh 'pip2 install ansible-lint'
-                echo 'USER jenkins'
+                sh 'USER jenkins'
                 echo 'Running ansible-lint ...'
                 //command to run ansible-lint the parameter required is the path where the playbooks are stored
                 sh 'ansible-lint  /ansible'
