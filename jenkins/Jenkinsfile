@@ -1,6 +1,16 @@
-node {
-    stage 'Get Code'
-        echo "Hello from Get Code"
-    stage 'Run Tests'
-        echo "Hello from Run Tests"
+pipeline {
+  agent { label 'Ansible CI/CD Pipeline' }
+
+  stages {
+    stage('Build') { steps { echo 'Building ...' } }
+    stage('Test') {
+      steps {
+        echo 'Installing ansible linter into job workspace ...'
+        //sh 'npm install --prefix ./ newman'
+        echo 'Testing ...'
+        //sh 'node_modules/.bin/newman run --disable-unicode test/postman/BaconIpsum.postman_collection.json --environment test/postman/production.postman_environment.json'
+      }
+    }
+    stage('Deploy') { steps { echo 'Deploying ...' } }
+  }
 }
