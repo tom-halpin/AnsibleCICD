@@ -1,5 +1,5 @@
 pipeline {
-  agent { label 'Ansible CI/CD Pipeline' }
+  //agent { label 'Ansible CI/CD Pipeline' }
 
   stages {
     stage('Build') { steps { echo 'Building ...' } }
