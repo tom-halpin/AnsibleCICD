@@ -1,4 +1,4 @@
-this script used to re-build container, and then run it. which is designed for linux.
+#this script used to re-build container, and then run it. which is designed for linux.
 ---
 #specify the host name which defined in the hosts file where located at ansible working folder
 - hosts: myself
