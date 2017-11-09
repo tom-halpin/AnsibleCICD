@@ -16,10 +16,15 @@ node {
                 //command to run ansible-lint the parameter required is the path where the playbooks are stored
                 sh 'ansible-lint ansible'
             }
-            stage ("Molecule Lint") {
+            stage('YAML Lint') {
+                echo 'Running yamllint ...'
+                //command to run yamllint the parameter required is the path where the playbooks are stored
+                sh 'yamllint cft'
+            }            
+            /*stage ("Molecule Lint") {
                echo 'Running Molecule Lint ...'
                   sh 'molecule lint'
-        }
+        }*/
             stage('Deploy') {
                 echo 'Deploying....'
             }
