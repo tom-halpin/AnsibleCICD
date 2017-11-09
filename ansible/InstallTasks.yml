@@ -5,9 +5,9 @@
   gather_facts: False
   # use root user on the remote server for each command
   become: true
-  become_user: root  
-  tasks: 
-  # stop the running named aspnetcorecontainer container if exist in server 
+  become_user: root
+  tasks:
+  # stop the running named aspnetcorecontainer container if exist in server
   - name: Stop Container
     shell: docker stop aspnetcorecontainer
     ignore_errors: yes
