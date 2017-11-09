@@ -11,7 +11,7 @@ node {
                     echo 'Building....'
                 }
             stage('Ansible Syntax Checker') {
-                echo 'Running ansible-lint ...'
+                echo 'Running ansible-playbook --syntax-check ...'
                 //command to run ansible-playbook in syntax checker mode the parameter required is the path where the playbooks are stored
                 sh 'ansible-playbook --syntax-check ansible/*.yml'
             }            
@@ -20,6 +20,11 @@ node {
                 //command to run ansible-lint the parameter required is the path where the playbooks are stored
                 sh 'ansible-lint ansible/*.yml'
             }*/
+            stage('Ansible Check - Dry Run') {
+                echo 'Running ansible-playbook --check ...'
+                //command to run ansible-playbook in syntax checker mode the parameter required is the path where the playbooks are stored
+                sh 'ansible-playbook --check ansible/*.yml'
+            }             
             stage('YAML Lint') {
                 echo 'Running yamllint ...'
                 //command to run yamllint the parameter required is the path where the playbooks are stored
