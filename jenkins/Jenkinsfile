@@ -15,11 +15,11 @@ node {
                 //command to run ansible-playbook in syntax checker mode the parameter required is the path where the playbooks are stored
                 sh 'ansible-playbook --syntax-check ansible/*.yml'
             }            
-            stage('Ansible Lint') {
+            /*stage('Ansible Lint') {
                 echo 'Running ansible-lint ...'
                 //command to run ansible-lint the parameter required is the path where the playbooks are stored
                 sh 'ansible-lint ansible/*.yml'
-            }
+            }*/
             stage('YAML Lint') {
                 echo 'Running yamllint ...'
                 //command to run yamllint the parameter required is the path where the playbooks are stored
