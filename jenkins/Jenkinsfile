@@ -26,7 +26,7 @@ node {
                 //command to run ansible-playbook in syntax checker mode the parameter required is the path where the playbooks are stored
                 sh 'ansible-playbook --check ansible/*.yml'
             }             
-            stage('YAML Lint') {
+            stage('CFT YAML Lint') {
                 echo 'Running yamllint ...'
                 //command to run yamllint the parameter required is the path where the playbooks are stored
                 sh 'yamllint cft/*.*'
@@ -73,4 +73,11 @@ def notifyBuild(String buildStatus = 'STARTED') {
 
   // Send notifications
   slackSend (color: colorCode, message: summary, channel: 'serviceagent')
+  //uncomment to send email notifications
+  /*+  emailext(
++      subject: subject,
++      body: details,
++      recipientProviders: [[$class: 'DevelopersRecipientProvider']]
++    )
+   */
 }
